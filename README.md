@@ -43,6 +43,8 @@ Just as easy as:
 ```
 pip install -r requirements.txt
 ```
+Also, add this package to your src folder: https://github.com/smarnav2904/grid_message/tree/main
+
 
 ---
 
