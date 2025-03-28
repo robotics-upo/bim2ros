@@ -70,14 +70,16 @@ def move_along_direction_vector(c1: Tuple[int, int, int], c2: Tuple[int, int, in
 
 def load_cluster_data(file_path: str) -> Tuple[List[Dict[str, Any]], np.ndarray]:
     """Load cluster details and connections from a file."""
-    try:
-        data = np.load(file_path, allow_pickle=True).item()
-        cluster_details = data.get('Cluster_Details', [])
-        connections = np.array(data.get('Connections', []))
-        return cluster_details, connections
-    except Exception as e:
-        rospy.logerr(f"Failed to load cluster data: {e}")
-        return [], np.array([])
+    
+    data = np.load(file_path, allow_pickle=True).item()
+    cluster_details = data.get('Cluster_Details', [])
+    connections = np.array(data.get('Connections', []))
+
+    if connections is None:
+        connections = []
+
+    return cluster_details, connections
+   
 
 def build_kdtrees(cluster_details: List[Dict[str, Any]]) -> Tuple[Dict[str, KDTree], Dict[str, np.ndarray]]:
     """Build KD-trees for each cluster."""
@@ -265,8 +267,8 @@ def main():
         return
 
     cluster_details, ifc_points = load_cluster_data(cluster_file)
-    if not cluster_details or ifc_points.size == 0:
-        rospy.logerr("No valid data to process.")
+    if not cluster_details:
+        rospy.logerr("No valid clusters to process.")
         return
 
     kdtrees, clusters = build_kdtrees(cluster_details)
