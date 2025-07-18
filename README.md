@@ -100,7 +100,9 @@ First of all you will need to drop your IFC file from your BIM project on `Model
 ## Acknowledgments
 This project uses the [IfcOpenShell](https://github.com/IfcOpenShell/IfcOpenShell) library, an open-source tool for working with Industry Foundation Classes (IFC) files.  
 Thank you to the IfcOpenShell contributors for their work on this powerful library.
+
 This work was supported by the grants INSERTION PID2021-127648OB-C31 and NORDIC TED2021-132476B-I00, funded by MCIN/AEI/10.13039/501100011033 and “European Union NextGenerationEU/PRTR”.
 
-<img src="https://raw.githubusercontent.com/robotics-upo/Heuristic_path_planners/master/resources/images/logo_ministerio.png" alt="logo_ministerio" width="400"/>
+<img src="https://raw.githubusercontent.com/robotics-upo/bim2ros/master/resources/logo_ministerio.png" alt="logo_ministerio" width="400"/>
+
 
